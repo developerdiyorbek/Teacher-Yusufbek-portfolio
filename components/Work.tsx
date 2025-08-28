@@ -1,20 +1,55 @@
-import { services, workData } from "@/constants";
+"use client";
+
+import { workData } from "@/constants";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 function Work() {
   return (
-    <section id="work" className="w-full px-[12%] py-10 scroll-mt-20">
-      <h4 className="text-center mb-2 text-lg font-ovo">My portfolio</h4>
-      <h2 className="text-center text-5xl font-ovo">My latest work</h2>
-      <p className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      id="work"
+      className="w-full px-[12%] py-10 scroll-mt-20"
+    >
+      <motion.h4
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="text-center mb-2 text-lg font-ovo"
+      >
+        My portfolio
+      </motion.h4>
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="text-center text-5xl font-ovo"
+      >
+        My latest work
+      </motion.h2>
+      <motion.p
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.7 }}
+        className="text-center max-w-2xl mx-auto mt-5 mb-12 font-ovo"
+      >
         Welcome to my web development portfolio! Explore a collection of
         projects showcasing my expertise in front-end development.
-      </p>
+      </motion.p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-10">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.9 }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-10 dark:text-black"
+      >
         {workData.map((project, index) => (
-          <div
+          <motion.div
             key={index}
+            whileInView={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
             className="aspect-square bg-no-repeat bg-cover bg-center rounded-lg relative cursor-pointer group"
             style={{ backgroundImage: `url(${project.bgImage})` }}
           >
@@ -32,10 +67,10 @@ function Work() {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </motion.section>
   );
 }
 

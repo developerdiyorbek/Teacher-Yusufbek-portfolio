@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Outfit, Ovo } from "next/font/google";
-import "./globals.css";
 import { PropsWithChildren } from "react";
+import { ThemeProvider } from "next-themes";
+import "./globals.css";
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -24,10 +25,15 @@ export default function RootLayout({ children }: PropsWithChildren) {
   return (
     <html
       lang="en"
+      suppressHydrationWarning
       className={`${outfit.variable} ${ovo.variable} scroll-smooth`}
     >
-      <body className={`antialiased font-outfit leading-8 overflow-x-hidden`}>
-        {children}
+      <body
+        className={`antialiased font-outfit leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}
+      >
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

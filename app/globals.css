@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-outfit: var(--font-outfit), sans-serif;
   --font-ovo: var(--font-ovo), serif;
