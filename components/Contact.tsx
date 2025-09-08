@@ -22,10 +22,8 @@ function Contact() {
       message: formData.get("message") as string,
     };
 
-    console.log(values);
-
     try {
-      const result = await sendMessage({
+      const response = await sendMessage({
         message: `
 🗓️ Date: ${format(new Date(), "dd MMMM yyyy")}
 
@@ -37,16 +35,17 @@ function Contact() {
 `,
       });
 
-      console.log(result);
+      console.log("Response:", response?.data);
 
-      if (result?.data?.success) {
-        toast.success(result.data.message);
-        e.currentTarget.reset();
-      } else {
-        toast.error(result?.data?.message || "Something went wrong!");
+      if (!response?.data?.success) {
+        throw new Error("Xabar yuborishda xatolik yuz berdi");
       }
+
+      toast.success(response.data.message);
+      e.currentTarget.reset();
     } catch {
-      toast.error("Something went wrong!");
+      console.error("Xabar yuborishda xatolik yuz berdi");
+      toast.error("Xabar yuborishda xatolik yuz berdi");
     } finally {
       setLoading(false);
     }

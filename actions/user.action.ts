@@ -4,8 +4,8 @@ import { actionClient } from "@/lib/safe-action";
 import { contactActionSchema } from "@/lib/validation";
 import axios from "axios";
 
-const telegramBotId = "5726585838:AAFw3arclQJTosdi9_4_eHFSsJwnT4uBt4s";
-const telegramChatId = "123456789";
+const telegramBotId = "8330874064:AAHBca17eTe0tSd0g3gNK0P7_sXaXgnPtrU";
+const telegramChatId = "153988527";
 
 export const sendMessage = actionClient
   .schema(contactActionSchema)
