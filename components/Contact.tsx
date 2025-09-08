@@ -42,9 +42,8 @@ function Contact() {
       }
 
       toast.success(response.data.message);
-      e.currentTarget.reset();
-    } catch {
-      console.error("Xabar yuborishda xatolik yuz berdi");
+    } catch (error) {
+      console.log(error);
       toast.error("Xabar yuborishda xatolik yuz berdi");
     } finally {
       setLoading(false);
